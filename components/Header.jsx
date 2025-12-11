@@ -1,11 +1,13 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import { LayoutDashboard, PenBox, Sparkles } from "lucide-react";
 import { SignedIn, SignedOut, UserButton, SignInButton, SignUpButton } from "@clerk/nextjs";
 import Link from 'next/link';
+import { checkUser } from "@/lib/checkUser";
 
-const Header = () => {
+const Header = async () => {
+
+  await checkUser()
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 backdrop-blur-xl bg-background/80">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">  
