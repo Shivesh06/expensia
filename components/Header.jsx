@@ -26,6 +26,9 @@ const Header = () => {
           <a href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors">
             How it Works
           </a>
+          <a href="#limited" className="text-muted-foreground hover:text-foreground transition-colors">
+            Join Now
+          </a>
         </div>
 
         <div className="flex items-center gap-2">
