@@ -3,6 +3,7 @@ import { LayoutDashboard, PenBox, Sparkles } from "lucide-react";
 import { SignedIn, SignedOut, UserButton, SignInButton, SignUpButton } from "@clerk/nextjs";
 import Link from 'next/link';
 import { checkUser } from "@/lib/checkUser";
+import { LandingPageNav } from "./LandingPageNav";
 
 const Header = async () => {
 
@@ -21,17 +22,7 @@ const Header = async () => {
           </div>
         </a>
 
-        <div className="hidden md:flex items-center gap-8">
-          <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">
-            Features
-          </a>
-          <a href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors">
-            How it Works
-          </a>
-          <a href="#limited" className="text-muted-foreground hover:text-foreground transition-colors">
-            Join Now
-          </a>
-        </div>
+        <LandingPageNav />
 
         <div className="flex items-center gap-2">
 
