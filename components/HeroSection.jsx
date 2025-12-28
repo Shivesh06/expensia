@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from "next/image";
 import { useRef, useEffect } from "react";
 import FeaturesSection from "./FeaturesSection.jsx";
+import { Dialog, DialogContent, DialogTrigger, DialogTitle, } from "@/components/ui/dialog";
 
 const HeroSection = () => {
 
@@ -60,12 +61,27 @@ const HeroSection = () => {
               <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
           </Link>
-          <Link href="/dashboard">
-            <Button size = "lg" variant="outline" className="px-8 h-12 text-base rounded-full border-border/50 hover:bg-secondary/80 backdrop-blur-sm transition-all duration-300">
-              Watch Demo
-              <PlayCircle className="mr-2 w-4 h-4" />
-            </Button>
-          </Link>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button
+                size="lg"
+                variant="outline"
+                className="px-8 h-12 text-base rounded-full border-border/50 hover:bg-secondary/80 backdrop-blur-sm transition-all duration-300 cursor-pointer"
+              >
+                Watch Demo
+                <PlayCircle className="mr-2 w-4 h-4" />
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[800px] p-0 bg-transparent border-none shadow-none">
+              <DialogTitle className="sr-only">Expensia App Demo</DialogTitle>
+              <div className="aspect-video w-full rounded-xl overflow-hidden shadow-2xl">
+                <video 
+                  controls autoPlay  className="w-full h-full">
+                  <source src="/demo.mp4" type="video/mp4" />
+                </video>
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
 
         <div className="hero-image-wrapper">
