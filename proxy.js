@@ -28,6 +28,11 @@ const aj = arcjet({
 // Create base Clerk middleware
 const clerk = clerkMiddleware(async (auth, req) => {
   const { userId } = await auth();
+
+  if (userId && req.nextUrl.pathname === "/") {
+    return NextResponse.redirect(new URL("/dashboard", req.url));
+  }
+
   if (!userId && isProtectedRoute(req)) {
     const { redirectToSignIn } = await auth();
     return redirectToSignIn();
