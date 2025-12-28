@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CalendarIcon, Loader2 } from "lucide-react";
@@ -161,29 +161,33 @@ export function AddTransactionForm({
 
         <div className="space-y-2">
           <label className="text-sm font-medium">Account</label>
-          <Select
-            onValueChange={(value) => setValue("accountId", value)}
-            defaultValue={getValues("accountId")}
-          >
-            <SelectTrigger>
-              <SelectValue placeholder="Select account" />
-            </SelectTrigger>
-            <SelectContent>
-              {accounts.map((account) => (
-                <SelectItem key={account.id} value={account.id}>
-                  {account.name} (₹{parseFloat(account.balance).toFixed(2)})
-                </SelectItem>
-              ))}
+            <div className="flex gap-2 items-center">
+              <Select
+                onValueChange={(value) => setValue("accountId", value)}
+                defaultValue={getValues("accountId")}
+              >
+                <SelectTrigger className="flex-1">
+                  <SelectValue placeholder="Select account" />
+                </SelectTrigger>
+                <SelectContent>
+                  {accounts.map((account) => (
+                    <SelectItem key={account.id} value={account.id}>
+                      {account.name} (₹{parseFloat(account.balance).toFixed(2)})
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
               <CreateAccountDrawer>
                 <Button
-                  variant="ghost"
-                  className="relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none hover:bg-accent hover:text-accent-foreground"
+                  variant="outline"
+                  className="h-10 w-10 px-2 sm:px-3 sm:w-auto"
+                  type="button"
                 >
-                  Create Account
+                  <span className="sm:hidden">+</span>
+                  <span className="hidden sm:inline">Create</span>
                 </Button>
               </CreateAccountDrawer>
-            </SelectContent>
-          </Select>
+            </div>
           {errors.accountId && (
             <p className="text-sm text-red-500">{errors.accountId.message}</p>
           )}
